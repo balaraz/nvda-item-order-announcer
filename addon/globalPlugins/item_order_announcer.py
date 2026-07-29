@@ -11,7 +11,7 @@ addonHandler.initTranslation()
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-	scriptCategory = (globalCommands.SCRCAT_FOCUS,)
+	scriptCategory = globalCommands.SCRCAT_FOCUS
 
 	@script(
 		# Translators: Description of a script that reports the order of the current item in a list or tree view.
