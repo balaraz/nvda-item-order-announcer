@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the 'itemOrderAnnouncer' package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 'itemOrderAnnouncer' '0.1'\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2026-07-29 15:55+0300\n"
+"PO-Revision-Date: 2026-07-29 18:30+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#. Translators: Description of a script that reports the order of the current item in a list or tree view.
+#: addon\globalPlugins\item_order_announcer.py:17
+msgid "Reports the current item's order and the total number of items"
+msgstr "Повідомляє порядок поточного елемента та загальну кількість елементів"
+
+#. Translators: Reported when there is no focused object.
+#: addon\globalPlugins\item_order_announcer.py:24
+msgid "No focus"
+msgstr "Немає фокусу"
+
+#. Translators: Reported when order information is not available for the focused object.
+#: addon\globalPlugins\item_order_announcer.py:30
+#: addon\globalPlugins\item_order_announcer.py:39
+msgid "Order not available"
+msgstr "Порядок недоступний"
+
+#. Translators: Reported when pressing the item order gesture, including the nesting level (e.g. in a tree view).
+#: addon\globalPlugins\item_order_announcer.py:44
+#, python-brace-format
+msgid "Item {index} of {total}, level {level}"
+msgstr "Елемент {index} з {total}, рівень {level}"
+
+#. Translators: Reported when pressing the item order gesture.
+#: addon\globalPlugins\item_order_announcer.py:49
+#, python-brace-format
+msgid "Item {index} of {total}"
+msgstr "Елемент {index} з {total}"
+
+#. Add-on summary/title, usually the user visible name of the add-on
+#. Translators: Summary/title for this add-on
+#. to be shown on installation and add-on information found in add-on store
+#: buildVars.py:21
+msgid "Item Order Announcer"
+msgstr "Оголошення порядку елемента"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-on store
+#: buildVars.py:24
+msgid ""
+"Quickly announces the order, total count, and nesting level of the currently "
+"focused object."
+msgstr ""
+"Швидко оголошує порядок, загальну кількість та рівень вкладеності поточного "
+"елемента у фокусі."
+
+#. Brief changelog for this version
+#. Translators: what's new content for the add-on version to be shown in the add-on store
+#: buildVars.py:29
+msgid "First release"
+msgstr "Перший випуск"
