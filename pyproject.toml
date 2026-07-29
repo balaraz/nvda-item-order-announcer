@@ -1,13 +1,9 @@
-[build-system]
-requires = ["setuptools~=80.9", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "addonTemplate"
+name = "item_order_announcer"
 dynamic = ["version"]
-description = "NVDA add-on template"
+description = ""
 maintainers = [
-	{name = "NV Access", email = "info@nvaccess.org"},
+	{name = "balaraz", email = "balaraz@tuta.io"},
 ]
 requires-python = ">=3.13,<3.14"
 classifiers = [
@@ -23,8 +19,9 @@ license = {file = "COPYING.TXT"}
 # This package is not installed as a library; every dependency is tooling used to
 # build, translate, or lint the add-on. They are declared as PEP 735 dependency groups.
 dependencies = []
+
 [project.urls]
-Repository = "https://github.com/nvaccess/addonTemplate"
+Repository = "https://github.com/balaraz/nvda-item-order-announcer"
 
 # PEP 735 dependency groups. `uv sync` installs the `dev` group by default, which
 # pulls in every tool needed to build, translate, and lint the add-on.
@@ -43,7 +40,6 @@ l10n = [
 	"markdown-link-attr-modifier==0.2.1",
 	"mdx-gh-links==0.4",
 ]
-# Lint
 lint = [
 	"uv==0.11.15",
 	"ruff==0.14.5",
@@ -55,6 +51,9 @@ dev = [
 	{ include-group = "l10n" },
 	{ include-group = "lint" },
 ]
+
+[tool.uv]
+package = false
 
 [tool.ruff]
 line-length = 110
