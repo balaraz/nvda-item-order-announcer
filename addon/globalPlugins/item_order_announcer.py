@@ -4,10 +4,30 @@ import globalCommands
 import api
 import ui
 from inputCore import InputGesture
+from NVDAObjects import NVDAObject
 from scriptHandler import script
 
 
 addonHandler.initTranslation()
+
+
+def _guessItemOrder(obj: NVDAObject) -> tuple[int, int] | None:
+	parent = obj.parent
+	if not parent:
+		return None
+
+	total = 0
+	index = None
+	for child in parent.children:
+		if child.role == obj.role:
+			total += 1
+			if child == obj:
+				index = total
+
+	if index is None or total == 0:
+		return None
+
+	return index, total
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
@@ -52,3 +72,24 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			message = _("Item {index} of {total}").format(index=index, total=total)
 
 		ui.message(message)
+
+	@script(
+		# Translators: Description of a script that guesses the current item's order when exact info is unavailable.
+		description=_("Guesses the current item's order and total count based on sibling objects"),
+		gesture="kb:NVDA+shift+i",
+	)
+	def script_guessItemOrder(self, gesture: InputGesture) -> None:
+		obj = api.getFocusObject()
+		if not obj:
+			ui.message(_("No focus"))
+			return
+
+		result = _guessItemOrder(obj)
+		if not result:
+			# Translators: Reported when guessed order information could not be determined.
+			ui.message(_("Order could not be guessed"))
+			return
+
+		index, total = result
+		# Translators: Reported when pressing the guessed item order gesture.
+		ui.message(_("Approximately item {index} of {total}").format(index=index, total=total))
