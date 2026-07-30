@@ -45,7 +45,7 @@ Distributed under the GNU General Public License v2.0 (GPL 2.0). See [COPYING.tx
 
 ## Change Log
 
-### Version 0.1
+### Version 1.0
 * Added script to report focused item order, total count, and nesting level.
 * Added fallback script to guess item order and total count based on sibling objects when native position info is unavailable.
 * Assigned default keyboard shortcuts (`NVDA+I` and `NVDA+Shift+I`) to the scripts.
