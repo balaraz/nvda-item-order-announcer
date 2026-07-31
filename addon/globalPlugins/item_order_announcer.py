@@ -1,8 +1,14 @@
+import time
+import threading
+from collections.abc import Callable
+
 import addonHandler
 import globalPluginHandler
+import queueHandler
 import globalCommands
 import api
 import ui
+import tones
 from inputCore import InputGesture
 from NVDAObjects import NVDAObject
 from scriptHandler import script
@@ -11,23 +17,29 @@ from scriptHandler import script
 addonHandler.initTranslation()
 
 
-def _guessItemOrder(obj: NVDAObject) -> tuple[int, int] | None:
-	parent = obj.parent
-	if not parent:
-		return None
-
+def _guessItemOrder(
+	obj: NVDAObject,
+	parent: NVDAObject,
+	onProgress: Callable[[], None],
+	onComplete: Callable[[int | None, int], None],
+	progressIntervalSeconds: float = 1.0,
+) -> None:
 	total = 0
 	index = None
+	lastAnnounce = time.monotonic()
+
 	for child in parent.children:
 		if child.role == obj.role:
 			total += 1
 			if child == obj:
 				index = total
 
-	if index is None or total == 0:
-		return None
+		now = time.monotonic()
+		if now - lastAnnounce >= progressIntervalSeconds:
+			onProgress()
+			lastAnnounce = now
 
-	return index, total
+	onComplete(index, total)
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
@@ -79,17 +91,42 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		gesture="kb:NVDA+shift+i",
 	)
 	def script_guessItemOrder(self, gesture: InputGesture) -> None:
+		"""
+		Always runs the counting logic in a background thread, even for small child lists.
+
+		We intentionally do NOT check `len(parent.children)` first to decide whether
+		a thread is needed. Fetching `parent.children` is itself the expensive
+		accessibility API call we're trying to protect against, so checking its
+		length would require paying that cost synchronously first anyway, defeating
+		the purpose of using a thread at all. The cost of always spawning a thread
+		(a few milliseconds) is negligible compared to the risk of freezing NVDA on
+		a slow accessibility backend (e.g. UIA-based apps).
+		"""
 		obj = api.getFocusObject()
 		if not obj:
 			ui.message(_("No focus"))
 			return
 
-		result = _guessItemOrder(obj)
-		if not result:
-			# Translators: Reported when guessed order information could not be determined.
-			ui.message(_("Order could not be guessed"))
+		parent = obj.parent
+		if not parent:
+			ui.message(_("No parent object"))
 			return
 
-		index, total = result
-		# Translators: Reported when pressing the guessed item order gesture.
-		ui.message(_("Approximately {index} of {total}").format(index=index, total=total))
+		def onProgress() -> None:
+			queueHandler.queueFunction(queueHandler.eventQueue, tones.beep, 500, 50)  # pyright: ignore[reportUnknownMemberType]
+
+		def onComplete(index: int | None, total: int) -> None:
+			if index is None or total == 0:
+				# Translators: Reported when guessed order information could not be determined.
+				message = _("Order could not be guessed")
+			else:
+				# Translators: Reported when pressing the guessed item order gesture.
+				message = _("Approximately {index} of {total}").format(index=index, total=total)
+			queueHandler.queueFunction(queueHandler.eventQueue, ui.message, message)  # pyright: ignore[reportUnknownMemberType]
+
+		thread = threading.Thread(
+			target=_guessItemOrder,
+			args=(obj, parent, onProgress, onComplete),
+			daemon=True,
+		)
+		thread.start()
