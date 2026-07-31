@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'itemOrderAnnouncer' '0.1'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2026-07-29 21:11+0300\n"
-"PO-Revision-Date: 2026-07-30 07:51+0300\n"
+"POT-Creation-Date: 2026-07-30 22:26+0300\n"
+"PO-Revision-Date: 2026-07-31 07:02+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -38,14 +38,14 @@ msgstr "Порядок недоступний"
 #. Translators: Reported when pressing the item order gesture, including the nesting level (e.g. in a tree view).
 #: addon\globalPlugins\item_order_announcer.py:65
 #, python-brace-format
-msgid "Item {index} of {total}, level {level}"
-msgstr "Елемент {index} з {total}, рівень {level}"
+msgid "{index} of {total}, level {level}"
+msgstr "{index} з {total}, рівень {level}"
 
 #. Translators: Reported when pressing the item order gesture.
 #: addon\globalPlugins\item_order_announcer.py:72
 #, python-brace-format
-msgid "Item {index} of {total}"
-msgstr "Елемент {index} з {total}"
+msgid "{index} of {total}"
+msgstr "{index} з {total}"
 
 #. Translators: Description of a script that guesses the current item's order when exact info is unavailable.
 #: addon\globalPlugins\item_order_announcer.py:78
@@ -63,8 +63,8 @@ msgstr "Не вдалося визначити порядок"
 #. Translators: Reported when pressing the guessed item order gesture.
 #: addon\globalPlugins\item_order_announcer.py:95
 #, python-brace-format
-msgid "Approximately item {index} of {total}"
-msgstr "Приблизно елемент {index} з {total}"
+msgid "Approximately {index} of {total}"
+msgstr "Приблизно {index} з {total}"
 
 #. Add-on summary/title, usually the user visible name of the add-on
 #. Translators: Summary/title for this add-on
