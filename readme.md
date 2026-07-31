@@ -8,8 +8,8 @@ This add-on for the NVDA screen reader quickly announces the order, total item c
 
 ## Features
 
-* **Instant Order Announcement:** Speaks the current item's index and total count in its group (e.g., "Item 3 of 10").
-* **Level Reporting:** Automatically includes the hierarchical nesting level when applicable (e.g., "Item 3 of 10, level 2").
+* **Instant Order Announcement:** Speaks the current item's index and total count in its group (e.g., "3 of 10").
+* **Level Reporting:** Automatically includes the hierarchical nesting level when applicable (e.g., "3 of 10, level 2").
 * **Fallback Order Guessing:** Allows guessing the order of an element by counting sibling objects when exact order info is unavailable.
 * **Configurable Shortcuts:** All shortcuts are customizable in NVDA's Input Gestures dialog.
 
@@ -28,14 +28,14 @@ This add-on for the NVDA screen reader quickly announces the order, total item c
   1. The add-on retrieves the currently focused object.
   2. It checks native position metadata for the item and its group.
   3. If position information is available, NVDA announces:
-     - `Item <index> of <total>`
+     - `<index> of <total>`
      - If nesting level exists: `, level <level>`
   4. If position metadata is missing, NVDA reports "Order not available".
 
 * **Guessed Position:**
   1. If exact position metadata is unavailable, the script inspects the focused object's parent container.
   2. It counts all sibling objects sharing the same accessibility role as the focused element.
-  3. If successful, NVDA announces: `Approximately item <index> of <total>`.
+  3. If successful, NVDA announces: `Approximately <index> of <total>`.
   4. If position cannot be determined, NVDA reports "Order could not be guessed".
 
 ## License

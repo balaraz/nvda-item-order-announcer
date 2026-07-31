@@ -62,14 +62,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 		if level is not None:
 			# Translators: Reported when pressing the item order gesture, including the nesting level (e.g. in a tree view).
-			message = _("Item {index} of {total}, level {level}").format(
+			message = _("{index} of {total}, level {level}").format(
 				index=index,
 				total=total,
 				level=level,
 			)
 		else:
 			# Translators: Reported when pressing the item order gesture.
-			message = _("Item {index} of {total}").format(index=index, total=total)
+			message = _("{index} of {total}").format(index=index, total=total)
 
 		ui.message(message)
 
@@ -92,4 +92,4 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 		index, total = result
 		# Translators: Reported when pressing the guessed item order gesture.
-		ui.message(_("Approximately item {index} of {total}").format(index=index, total=total))
+		ui.message(_("Approximately {index} of {total}").format(index=index, total=total))
