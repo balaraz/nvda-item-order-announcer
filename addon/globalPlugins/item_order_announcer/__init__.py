@@ -21,6 +21,7 @@ def _guessItemOrder(
 	parent: NVDAObject,
 	onProgress: Callable[[], None],
 	onComplete: Callable[[int | None, int], None],
+	cancelEvent: threading.Event,
 	progressIntervalSeconds: float = 1.0,
 ) -> None:
 	total = 0
@@ -28,6 +29,9 @@ def _guessItemOrder(
 	lastAnnounce = time.monotonic()
 
 	for child in parent.children:
+		if cancelEvent.is_set():
+			return
+
 		if child.role == obj.role:
 			total += 1
 			if child == obj:
@@ -35,14 +39,21 @@ def _guessItemOrder(
 
 		now = time.monotonic()
 		if now - lastAnnounce >= progressIntervalSeconds:
+			if cancelEvent.is_set():
+				return
 			onProgress()
 			lastAnnounce = now
 
-	onComplete(index, total)
+	if not cancelEvent.is_set():
+		onComplete(index, total)
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	scriptCategory = globalCommands.SCRCAT_FOCUS
+
+	_workerThread: threading.Thread | None = None
+	_cancelEvent: threading.Event | None = None
+	_currentObj: NVDAObject | None = None
 
 	@script(
 		# Translators: Description of a script that reports the order of the current item in a list or tree view.
@@ -106,8 +117,20 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("No focus"))
 			return
 
+		if self._workerThread is not None and self._workerThread.is_alive():
+			if self._currentObj == obj:
+				tones.beep(200, 40)
+				return
+			else:
+				if self._cancelEvent is not None:
+					self._cancelEvent.set()
+
+		self._cancelEvent = threading.Event()
+		self._currentObj = obj
+
 		parent = obj.parent
 		if not parent:
+			self._currentObj = None
 			ui.message(_("No parent object"))
 			return
 
@@ -115,6 +138,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			queueHandler.queueFunction(queueHandler.eventQueue, tones.beep, 500, 50)  # pyright: ignore[reportUnknownMemberType]
 
 		def onComplete(index: int | None, total: int) -> None:
+			if self._currentObj == obj:
+				self._currentObj = None
+
 			if index is None or total == 0:
 				# Translators: Reported when guessed order information could not be determined.
 				message = _("Order could not be guessed")
@@ -123,9 +149,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				message = _("Approximately {index} of {total}").format(index=index, total=total)
 			queueHandler.queueFunction(queueHandler.eventQueue, ui.message, message)  # pyright: ignore[reportUnknownMemberType]
 
-		thread = threading.Thread(
+		self._workerThread = threading.Thread(
 			target=_guessItemOrder,
-			args=(obj, parent, onProgress, onComplete),
+			args=(obj, parent, onProgress, onComplete, self._cancelEvent),
 			daemon=True,
 		)
-		thread.start()
+		self._workerThread.start()
