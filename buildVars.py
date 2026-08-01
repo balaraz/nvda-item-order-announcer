@@ -23,10 +23,15 @@ addon_info = AddonInfo(
 	# Translators: Long description to be shown for this add-on on add-on information from add-on store
 	addon_description=_("""Quickly announces the order, total count, and nesting level of the currently focused object."""),
 	# version
-	addon_version="1.0",
+	addon_version="1.1",
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
-	addon_changelog=_("""First release"""),
+	addon_changelog=_("""- Removed the word "Item" ("Елемент") from announcement messages for a more concise output (e.g., "3 of 10" instead of "Item 3 of 10").
+- Updated minimum NVDA version to 2024.1 due to Python 3.10+ syntax requirements (older NVDA versions use Python 3.7, while NVDA 2024.1 updated to Python 3.11).
+- Made fallback item order guessing asynchronous by running calculation in a background thread with periodic audio progress feedback (sound signal) to avoid freezing NVDA during long container traversals.
+- Delayed progress audio feedback to prevent unnecessary beeps on fast lists.
+- Automatically cancel background item order calculation when focus moves to another object.
+- Updated Ukrainian localization and documentation."""),
 	# Author(s)
 	addon_author="balaraz <balaraz@tuta.io>",
 	# URL for the add-on documentation support
