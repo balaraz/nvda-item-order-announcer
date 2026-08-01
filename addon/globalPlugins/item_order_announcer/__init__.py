@@ -1,5 +1,4 @@
 import threading
-import time
 from collections.abc import Callable
 
 import addonHandler
@@ -9,6 +8,7 @@ import globalPluginHandler
 import queueHandler
 import tones
 import ui
+import wx
 from inputCore import InputGesture
 from NVDAObjects import NVDAObject
 from scriptHandler import script
@@ -19,28 +19,13 @@ addonHandler.initTranslation()
 def _guessItemOrder(
 	obj: NVDAObject,
 	parent: NVDAObject,
-	onProgress: Callable[[], None],
 	onComplete: Callable[[int | None, int], None],
 	cancelEvent: threading.Event,
-	progressIntervalSeconds: float = 1.0,
 ) -> None:
 	total = 0
 	index = None
 
-	def initialProgress() -> None:
-		if not cancelEvent.is_set():
-			onProgress()
-
-	timer = threading.Timer(0.3, initialProgress)
-	timer.start()
-
-	try:
-		children = parent.children
-	finally:
-		timer.cancel()
-
-	lastAnnounce = time.monotonic()
-
+	children = parent.children
 	for child in children:
 		if cancelEvent.is_set():
 			return
@@ -49,13 +34,6 @@ def _guessItemOrder(
 			total += 1
 			if child == obj:
 				index = total
-
-		now = time.monotonic()
-		if now - lastAnnounce >= progressIntervalSeconds:
-			if cancelEvent.is_set():
-				return
-			onProgress()
-			lastAnnounce = now
 
 	if not cancelEvent.is_set():
 		onComplete(index, total)
@@ -147,8 +125,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("No parent object"))
 			return
 
-		def onProgress() -> None:
-			queueHandler.queueFunction(queueHandler.eventQueue, tones.beep, 500, 50)  # pyright: ignore[reportUnknownMemberType]
+		def beepLoop() -> None:
+			if self._cancelEvent is None or self._cancelEvent.is_set():
+				return
+			if self._currentObj != obj or self._workerThread is None or not self._workerThread.is_alive():
+				return
+
+			tones.beep(500, 50)
+			wx.CallLater(1000, beepLoop)  # pyright: ignore[reportUnusedCallResult]
 
 		def onComplete(index: int | None, total: int) -> None:
 			if self._currentObj == obj:
@@ -164,7 +148,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 		self._workerThread = threading.Thread(
 			target=_guessItemOrder,
-			args=(obj, parent, onProgress, onComplete, self._cancelEvent),
+			args=(obj, parent, onComplete, self._cancelEvent),
 			daemon=True,
 		)
 		self._workerThread.start()
+
+		wx.CallLater(300, beepLoop)  # pyright: ignore[reportUnusedCallResult]
