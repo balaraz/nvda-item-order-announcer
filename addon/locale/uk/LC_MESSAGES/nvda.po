@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'itemOrderAnnouncer' '0.1'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2026-07-30 22:26+0300\n"
-"PO-Revision-Date: 2026-07-31 07:02+0300\n"
+"POT-Creation-Date: 2026-08-01 18:10+0300\n"
+"PO-Revision-Date: 2026-08-01 18:23+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -19,49 +19,53 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. Translators: Description of a script that reports the order of the current item in a list or tree view.
-#: addon\globalPlugins\item_order_announcer.py:38
+#: addon\globalPlugins\item_order_announcer\__init__.py:51
 msgid "Reports the current item's order and the total number of items"
 msgstr "Повідомляє порядок поточного елемента та загальну кількість елементів"
 
 #. Translators: Reported when there is no focused object.
-#: addon\globalPlugins\item_order_announcer.py:45
-#: addon\globalPlugins\item_order_announcer.py:84
+#: addon\globalPlugins\item_order_announcer\__init__.py:58
+#: addon\globalPlugins\item_order_announcer\__init__.py:108
 msgid "No focus"
 msgstr "Немає фокусу"
 
 #. Translators: Reported when order information is not available for the focused object.
-#: addon\globalPlugins\item_order_announcer.py:51
-#: addon\globalPlugins\item_order_announcer.py:60
+#: addon\globalPlugins\item_order_announcer\__init__.py:64
+#: addon\globalPlugins\item_order_announcer\__init__.py:73
 msgid "Order not available"
 msgstr "Порядок недоступний"
 
 #. Translators: Reported when pressing the item order gesture, including the nesting level (e.g. in a tree view).
-#: addon\globalPlugins\item_order_announcer.py:65
+#: addon\globalPlugins\item_order_announcer\__init__.py:78
 #, python-brace-format
 msgid "{index} of {total}, level {level}"
 msgstr "{index} з {total}, рівень {level}"
 
 #. Translators: Reported when pressing the item order gesture.
-#: addon\globalPlugins\item_order_announcer.py:72
+#: addon\globalPlugins\item_order_announcer\__init__.py:85
 #, python-brace-format
 msgid "{index} of {total}"
 msgstr "{index} з {total}"
 
 #. Translators: Description of a script that guesses the current item's order when exact info is unavailable.
-#: addon\globalPlugins\item_order_announcer.py:78
+#: addon\globalPlugins\item_order_announcer\__init__.py:91
 msgid ""
 "Guesses the current item's order and total count based on sibling objects"
 msgstr ""
 "Приблизно визначає порядок поточного елемента та загальну кількість на "
 "основі сусідніх об'єктів"
 
+#: addon\globalPlugins\item_order_announcer\__init__.py:125
+msgid "No parent object"
+msgstr "Немає батьківського об'єкта"
+
 #. Translators: Reported when guessed order information could not be determined.
-#: addon\globalPlugins\item_order_announcer.py:90
+#: addon\globalPlugins\item_order_announcer\__init__.py:146
 msgid "Order could not be guessed"
 msgstr "Не вдалося визначити порядок"
 
 #. Translators: Reported when pressing the guessed item order gesture.
-#: addon\globalPlugins\item_order_announcer.py:95
+#: addon\globalPlugins\item_order_announcer\__init__.py:149
 #, python-brace-format
 msgid "Approximately {index} of {total}"
 msgstr "Приблизно {index} з {total}"
@@ -86,5 +90,34 @@ msgstr ""
 #. Brief changelog for this version
 #. Translators: what's new content for the add-on version to be shown in the add-on store
 #: buildVars.py:29
-msgid "First release"
-msgstr "Перший випуск"
+msgid ""
+"- Removed the word \"Item\" (\"Елемент\") from announcement messages for a "
+"more concise output (e.g., \"3 of 10\" instead of \"Item 3 of 10\").\n"
+"- Updated minimum NVDA version to 2024.1 due to Python 3.10+ syntax "
+"requirements (older NVDA versions use Python 3.7, while NVDA 2024.1 updated "
+"to Python 3.11).\n"
+"- Made fallback item order guessing asynchronous by running calculation in a "
+"background thread with periodic audio progress feedback (sound signal) to "
+"avoid freezing NVDA during long container traversals.\n"
+"- Delayed progress audio feedback to prevent unnecessary beeps on fast "
+"lists.\n"
+"- Automatically cancel background item order calculation when focus moves to "
+"another object.\n"
+"- Updated Ukrainian localization and documentation."
+msgstr ""
+"- Прибрано слово «Елемент» із повідомлень оголошення для лаконічнішого "
+"виводу (наприклад, «3 з 10» замість «Елемент 3 з 10»).\n"
+"- Оновлено мінімальну версію NVDA до 2024.1 через вимоги синтаксису Python "
+"3.10+ (старіші версії NVDA використовують Python 3.7, тоді як NVDA 2024.1 "
+"оновлено до Python 3.11).\n"
+"- Переведено резервне приблизне визначення порядку у фоновий потік із "
+"періодичним звуковим індикатором прогресу (звуковий сигнал), щоб уникнути "
+"зависання NVDA під час обходу великих контейнерів.\n"
+"- Додано затримку звукового індикатора прогресу, щоб запобігти зайвим "
+"звуковим сигналам на швидких списках.\n"
+"- Автоматичне скасування фонового розрахунку порядку елемента при переході "
+"фокуса на інший об'єкт.\n"
+"- Оновлено українську локалізацію та документацію."
+
+#~ msgid "First release"
+#~ msgstr "Перший випуск"
