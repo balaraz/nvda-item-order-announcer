@@ -108,13 +108,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("No focus"))
 			return
 
-		if self._workerThread is not None and self._workerThread.is_alive():
-			if self._currentObj == obj:
-				tones.beep(200, 40)
-				return
-			else:
-				if self._cancelEvent is not None:
-					self._cancelEvent.set()
+		if self._currentObj == obj:
+			tones.beep(200, 40)
+			return
+
+		if self._cancelEvent is not None:
+			self._cancelEvent.set()
 
 		cancelEvent = threading.Event()
 		self._cancelEvent = cancelEvent
@@ -135,8 +134,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 		def onComplete(index: int | None, total: int) -> None:
 			def finish() -> None:
-				if self._currentObj == obj:
-					self._currentObj = None
+				if self._workerThread is not workerThread:
+					return
+
+				self._currentObj = None
+				self._workerThread = None
+				self._cancelEvent = None
 
 				if index is None or total == 0:
 					# Translators: Reported when guessed order information could not be determined.
