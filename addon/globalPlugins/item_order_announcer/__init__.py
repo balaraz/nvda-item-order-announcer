@@ -26,9 +26,22 @@ def _guessItemOrder(
 ) -> None:
 	total = 0
 	index = None
+
+	def initialProgress() -> None:
+		if not cancelEvent.is_set():
+			onProgress()
+
+	timer = threading.Timer(0.3, initialProgress)
+	timer.start()
+
+	try:
+		children = parent.children
+	finally:
+		timer.cancel()
+
 	lastAnnounce = time.monotonic()
 
-	for child in parent.children:
+	for child in children:
 		if cancelEvent.is_set():
 			return
 
