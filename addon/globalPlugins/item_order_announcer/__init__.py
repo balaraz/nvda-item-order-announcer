@@ -1,18 +1,17 @@
-import time
 import threading
+import time
 from collections.abc import Callable
 
 import addonHandler
+import api
+import globalCommands
 import globalPluginHandler
 import queueHandler
-import globalCommands
-import api
-import ui
 import tones
+import ui
 from inputCore import InputGesture
 from NVDAObjects import NVDAObject
 from scriptHandler import script
-
 
 addonHandler.initTranslation()
 
