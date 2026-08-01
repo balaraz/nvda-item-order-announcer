@@ -116,7 +116,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				if self._cancelEvent is not None:
 					self._cancelEvent.set()
 
-		self._cancelEvent = threading.Event()
+		cancelEvent = threading.Event()
+		self._cancelEvent = cancelEvent
 		self._currentObj = obj
 
 		parent = obj.parent
@@ -126,31 +127,33 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			return
 
 		def beepLoop() -> None:
-			if self._cancelEvent is None or self._cancelEvent.is_set():
-				return
-			if self._currentObj != obj or self._workerThread is None or not self._workerThread.is_alive():
+			if cancelEvent.is_set() or not workerThread.is_alive():
 				return
 
 			tones.beep(500, 50)
 			wx.CallLater(1000, beepLoop)  # pyright: ignore[reportUnusedCallResult]
 
 		def onComplete(index: int | None, total: int) -> None:
-			if self._currentObj == obj:
-				self._currentObj = None
+			def finish() -> None:
+				if self._currentObj == obj:
+					self._currentObj = None
 
-			if index is None or total == 0:
-				# Translators: Reported when guessed order information could not be determined.
-				message = _("Order could not be guessed")
-			else:
-				# Translators: Reported when pressing the guessed item order gesture.
-				message = _("Approximately {index} of {total}").format(index=index, total=total)
-			queueHandler.queueFunction(queueHandler.eventQueue, ui.message, message)  # pyright: ignore[reportUnknownMemberType]
+				if index is None or total == 0:
+					# Translators: Reported when guessed order information could not be determined.
+					message = _("Order could not be guessed")
+				else:
+					# Translators: Reported when pressing the guessed item order gesture.
+					message = _("Approximately {index} of {total}").format(index=index, total=total)
+				ui.message(message)
 
-		self._workerThread = threading.Thread(
+			queueHandler.queueFunction(queueHandler.eventQueue, finish)  # pyright: ignore[reportUnknownMemberType]
+
+		workerThread = threading.Thread(
 			target=_guessItemOrder,
-			args=(obj, parent, onComplete, self._cancelEvent),
+			args=(obj, parent, onComplete, cancelEvent),
 			daemon=True,
 		)
-		self._workerThread.start()
+		self._workerThread = workerThread
+		workerThread.start()
 
 		wx.CallLater(300, beepLoop)  # pyright: ignore[reportUnusedCallResult]
