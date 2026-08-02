@@ -39,6 +39,43 @@ def _guessItemOrder(
 		onComplete(index, total)
 
 
+def _iAccessibleGuessItemOrder(obj: NVDAObject) -> tuple[int, int] | None:
+	"""
+	Estimates the object's order among its siblings without exact positionInfo.
+
+	This mirrors NVDA core's own fallback approach (used when the
+	"Guess object position information when unavailable" setting is enabled):
+	the object's own IAccessibleChildID is already a 1-based index assigned by
+	the accessibility server, and the parent's accChildCount is a single COM
+	property giving the total count. No iteration over children is needed,
+	which is why this is instant even for containers with thousands of items.
+
+	This only works for classic MSAA/IAccessible objects; UIA objects don't
+	expose IAccessibleChildID, so this returns None for those.
+	"""
+	childID = getattr(obj, "IAccessibleChildID", None)
+	if not childID:
+		return None
+
+	parent = obj.parent
+	if not parent:
+		return None
+
+	iaObject = getattr(parent, "IAccessibleObject", None)
+	if iaObject is None:
+		return None
+
+	try:
+		total = iaObject.accChildCount
+	except Exception:
+		return None
+
+	if total <= 0:
+		return None
+
+	return childID, total
+
+
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	scriptCategory = globalCommands.SCRCAT_FOCUS
 
@@ -47,7 +84,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	_currentObj: NVDAObject | None = None
 
 	@script(
-		# Translators: Description of a script that reports the order of the current item in a list or tree view.
+		# Translators: Description of a script that reports the current item's order and the total
+		# number of items in a list or tree view, falling back to an estimate when exact information
+		# is unavailable.
 		description=_("Reports the current item's order and the total number of items"),
 		gesture="kb:NVDA+i",
 	)
@@ -59,36 +98,38 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			return
 
 		info = getattr(obj, "positionInfo", None)
-		if not info:
-			# Translators: Reported when order information is not available for the focused object.
-			ui.message(_("Order not available"))
+		index = info.get("indexInGroup") if info else None
+		total = info.get("similarItemsInGroup") if info else None
+		level = info.get("level") if info else None
+
+		if index is not None and total is not None:
+			if level is not None:
+				# Translators: Reported when pressing the item order gesture, including the nesting
+				# level (e.g. in a tree view).
+				message = _("{index} of {total}, level {level}").format(
+					index=index,
+					total=total,
+					level=level,
+				)
+			else:
+				# Translators: Reported when pressing the item order gesture.
+				message = _("{index} of {total}").format(index=index, total=total)
+			ui.message(message)
 			return
 
-		index = info.get("indexInGroup")
-		total = info.get("similarItemsInGroup")
-		level = info.get("level")
-
-		if index is None or total is None:
-			# Translators: Reported when order information is not available for the focused object.
-			ui.message(_("Order not available"))
+		result = _iAccessibleGuessItemOrder(obj)
+		if not result:
+			# Translators: Reported when order information could not be determined, even by estimation.
+			ui.message(_("Order could not be guessed"))
 			return
 
-		if level is not None:
-			# Translators: Reported when pressing the item order gesture, including the nesting level (e.g. in a tree view).
-			message = _("{index} of {total}, level {level}").format(
-				index=index,
-				total=total,
-				level=level,
-			)
-		else:
-			# Translators: Reported when pressing the item order gesture.
-			message = _("{index} of {total}").format(index=index, total=total)
-
-		ui.message(message)
+		index, total = result
+		# Translators: Reported when pressing the item order gesture and falling back to an estimate.
+		ui.message(_("Approximately {index} of {total}").format(index=index, total=total))
 
 	@script(
 		# Translators: Description of a script that guesses the current item's order when exact info is unavailable.
-		description=_("Guesses the current item's order and total count based on sibling objects"),
+		description=_("Guesses the current item's order and total count based on sibling objects (thorough)"),
 		gesture="kb:NVDA+shift+i",
 	)
 	def script_guessItemOrder(self, gesture: InputGesture) -> None:
