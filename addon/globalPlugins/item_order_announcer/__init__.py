@@ -83,6 +83,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	_cancelEvent: threading.Event | None = None
 	_currentObj: NVDAObject | None = None
 
+	def _cancelOngoingTask(self) -> None:
+		if self._cancelEvent is not None:
+			self._cancelEvent.set()
+		self._workerThread = None
+		self._currentObj = None
+
 	@script(
 		# Translators: Description of a script that reports the current item's order and the total
 		# number of items in a list or tree view, falling back to an estimate when exact information
@@ -91,6 +97,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		gesture="kb:NVDA+i",
 	)
 	def script_reportItemOrder(self, gesture: InputGesture) -> None:
+		self._cancelOngoingTask()
+
 		obj = api.getFocusObject()
 		if not obj:
 			# Translators: Reported when there is no focused object.
@@ -153,8 +161,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			tones.beep(200, 40)
 			return
 
-		if self._cancelEvent is not None:
-			self._cancelEvent.set()
+		self._cancelOngoingTask()
 
 		cancelEvent = threading.Event()
 		self._cancelEvent = cancelEvent
