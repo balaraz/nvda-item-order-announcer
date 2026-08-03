@@ -94,8 +94,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 		result = self._backgroundGuesser.start(obj, onFilter, onProgress, onResult)
 
-		if result is StartResult.ALREADY_RUNNING:
-			tones.beep(200, 40)
-		elif result is StartResult.NO_PARENT:
-			# Translators: Reported when the focused object has no parent to estimate order from.
-			ui.message(_("No parent object"))
+		match result:
+			case StartResult.STARTED:
+				pass
+			case StartResult.ALREADY_RUNNING:
+				tones.beep(200, 40)
+			case StartResult.NO_PARENT:
+				# Translators: Reported when the focused object has no parent to estimate order from.
+				ui.message(_("No parent object"))
