@@ -1,3 +1,5 @@
+from collections.abc import Callable
+
 import addonHandler
 import api
 import globalCommands
@@ -10,6 +12,7 @@ from scriptHandler import script
 
 from .backgroundGuess import BackgroundOrderGuesser, StartResult
 from .positionInfo import getExactPosition, guessPositionViaIAccessible
+from .filterMenu import showFilterMenu
 
 
 addonHandler.initTranslation()
@@ -78,9 +81,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("No focus"))
 			return
 
-		def onFilter(neighbor: NVDAObject) -> bool:
-			return neighbor.role == obj.role
-
 		def onProgress() -> None:
 			tones.beep(500, 50)
 
@@ -92,13 +92,16 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				# Translators: Reported when pressing the guessed item order gesture.
 				ui.message(_("Approximately {index} of {total}").format(index=index, total=total))
 
-		result = self._backgroundGuesser.start(obj, onFilter, onProgress, onResult)
+		def onFilterChosen(onFilter: Callable[[NVDAObject], bool]) -> None:
+			result = self._backgroundGuesser.start(obj, onFilter, onProgress, onResult)
 
-		match result:
-			case StartResult.STARTED:
-				pass
-			case StartResult.ALREADY_RUNNING:
-				tones.beep(200, 40)
-			case StartResult.NO_PARENT:
-				# Translators: Reported when the focused object has no parent to estimate order from.
-				ui.message(_("No parent object"))
+			match result:
+				case StartResult.STARTED:
+					pass
+				case StartResult.ALREADY_RUNNING:
+					tones.beep(200, 40)
+				case StartResult.NO_PARENT:
+					# Translators: Reported when the focused object has no parent to estimate order from.
+					ui.message(_("No parent object"))
+
+		showFilterMenu(onFilterChosen, obj)
