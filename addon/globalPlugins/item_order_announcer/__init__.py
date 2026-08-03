@@ -20,6 +20,7 @@ def _guessItemOrder(
 	obj: NVDAObject,
 	parent: NVDAObject,
 	onComplete: Callable[[int | None, int], None],
+	onFilter: Callable[[NVDAObject], bool],
 	cancelEvent: threading.Event,
 ) -> None:
 	total = 0
@@ -30,7 +31,7 @@ def _guessItemOrder(
 		if cancelEvent.is_set():
 			return
 
-		if child.role == obj.role:
+		if onFilter(child):
 			total += 1
 			if child == obj:
 				index = total
@@ -199,9 +200,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 			queueHandler.queueFunction(queueHandler.eventQueue, finish)  # pyright: ignore[reportUnknownMemberType]
 
+		def filterByRole(neighbor: NVDAObject) -> bool:
+			return neighbor.role == obj.role
+
 		workerThread = threading.Thread(
 			target=_guessItemOrder,
-			args=(obj, parent, onComplete, cancelEvent),
+			args=(obj, parent, onComplete, filterByRole, cancelEvent),
 			daemon=True,
 		)
 		self._workerThread = workerThread
