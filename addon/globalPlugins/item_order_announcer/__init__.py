@@ -9,46 +9,10 @@ from NVDAObjects import NVDAObject
 from scriptHandler import script
 
 from .backgroundGuess import BackgroundOrderGuesser, StartResult
+from .positionInfo import getExactPosition, guessPositionViaIAccessible
 
 
 addonHandler.initTranslation()
-
-
-def _iAccessibleGuessItemOrder(obj: NVDAObject) -> tuple[int, int] | None:
-	"""
-	Estimates the object's order among its siblings without exact positionInfo.
-
-	This mirrors NVDA core's own fallback approach (used when the
-	"Guess object position information when unavailable" setting is enabled):
-	the object's own IAccessibleChildID is already a 1-based index assigned by
-	the accessibility server, and the parent's accChildCount is a single COM
-	property giving the total count. No iteration over children is needed,
-	which is why this is instant even for containers with thousands of items.
-
-	This only works for classic MSAA/IAccessible objects; UIA objects don't
-	expose IAccessibleChildID, so this returns None for those.
-	"""
-	childID = getattr(obj, "IAccessibleChildID", None)
-	if not childID:
-		return None
-
-	parent = obj.parent
-	if not parent:
-		return None
-
-	iaObject = getattr(parent, "IAccessibleObject", None)
-	if iaObject is None:
-		return None
-
-	try:
-		total = iaObject.accChildCount
-	except Exception:
-		return None
-
-	if total <= 0:
-		return None
-
-	return childID, total
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
@@ -75,12 +39,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("No focus"))
 			return
 
-		info = getattr(obj, "positionInfo", None)
-		index = info.get("indexInGroup") if info else None
-		total = info.get("similarItemsInGroup") if info else None
-		level = info.get("level") if info else None
-
-		if index is not None and total is not None:
+		exact = getExactPosition(obj)
+		if exact:
+			index, total, level = exact
 			if level is not None:
 				# Translators: Reported when pressing the item order gesture, including the nesting
 				# level (e.g. in a tree view).
@@ -95,13 +56,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(message)
 			return
 
-		result = _iAccessibleGuessItemOrder(obj)
-		if not result:
+		guessed = guessPositionViaIAccessible(obj)
+		if not guessed:
 			# Translators: Reported when order information could not be determined, even by estimation.
 			ui.message(_("Order could not be guessed"))
 			return
 
-		index, total = result
+		index, total = guessed
 		# Translators: Reported when pressing the item order gesture and falling back to an estimate.
 		ui.message(_("Approximately {index} of {total}").format(index=index, total=total))
 
