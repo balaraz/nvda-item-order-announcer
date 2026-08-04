@@ -1,4 +1,5 @@
 from collections.abc import Callable
+from typing import Final
 
 import addonHandler
 import api
@@ -24,7 +25,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	# Class-level (not instance-level) so the background task's state survives
 	# a plugin reload (e.g. via the Scratchpad reload shortcut) without a full
 	# NVDA restart, avoiding a dangling thread from an orphaned instance.
-	_backgroundGuesser = BackgroundOrderGuesser()
+	_backgroundGuesser: Final = BackgroundOrderGuesser()
 
 	@script(
 		# Translators: Description of a script that reports the current item's order and the total
