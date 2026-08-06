@@ -42,9 +42,11 @@ def showFilterMenu(
 		allItem = menu.Append(wx.ID_ANY, _("All siblings"))  # pyright: ignore[reportUnknownMemberType]
 
 		def onByRole(evt: wx.CommandEvent) -> None:
+			onBeforeFocusRestore()
 			onFilterChosen(filterByRole(obj))
 
 		def onAll(evt: wx.CommandEvent) -> None:
+			onBeforeFocusRestore()
 			onFilterChosen(filterAll)
 
 		menu.Bind(wx.EVT_MENU, onByRole, byRoleItem)  # pyright: ignore[reportUnknownMemberType]
@@ -54,7 +56,6 @@ def showFilterMenu(
 		gui.mainFrame.prePopup()
 		try:
 			gui.mainFrame.PopupMenu(menu)  # pyright: ignore[reportUnknownMemberType, reportUnusedCallResult]
-			onBeforeFocusRestore()
 		finally:
 			gui.mainFrame.postPopup()
 		menu.Destroy()  # pyright: ignore[reportUnusedCallResult]
