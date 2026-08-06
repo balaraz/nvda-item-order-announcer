@@ -1,3 +1,6 @@
+import time
+
+
 class FocusEventSuppressor:
 	"""
 	Tracks whether the next foreground/gainFocus event should be swallowed.
@@ -8,24 +11,19 @@ class FocusEventSuppressor:
 	changed from the user's perspective.
 	"""
 
+	_SUPPRESS_TIME_WINDOW_SECONDS = 0.5
+
 	def __init__(self) -> None:
 		super().__init__()
-		self._suppressForeground = False
-		self._suppressFocus = False
+		self._suppressUntil: float | None = None
 
 	def suppressNext(self) -> None:
-		"""Call right before triggering the real foreground/focus change to suppress."""
-		self._suppressForeground = True
-		self._suppressFocus = True
+		self._suppressUntil = time.monotonic() + self._SUPPRESS_TIME_WINDOW_SECONDS
 
-	def shouldSuppressForeground(self) -> bool:
-		if self._suppressForeground:
-			self._suppressForeground = False
+	def shouldSuppress(self) -> bool:
+		if self._suppressUntil is None:
+			return False
+		if time.monotonic() < self._suppressUntil:
 			return True
-		return False
-
-	def shouldSuppressFocus(self) -> bool:
-		if self._suppressFocus:
-			self._suppressFocus = False
-			return True
+		self._suppressUntil = None
 		return False

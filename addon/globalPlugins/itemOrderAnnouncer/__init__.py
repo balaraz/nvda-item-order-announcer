@@ -31,7 +31,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	_focusSuppressor: Final = FocusEventSuppressor()
 
 	def event_foreground(self, obj: NVDAObject, nextHandler: Callable[[], None]) -> None:
-		flag = self._focusSuppressor.shouldSuppressForeground()
+		flag = self._focusSuppressor.shouldSuppress()
 		log.debug("event_foreground called, suppressForeground flag was set: %r", flag)
 		if flag:
 			log.debug("event_foreground SUPPRESSED")
@@ -39,10 +39,17 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		nextHandler()
 
 	def event_gainFocus(self, obj: NVDAObject, nextHandler: Callable[[], None]) -> None:
-		flag = self._focusSuppressor.shouldSuppressFocus()
+		flag = self._focusSuppressor.shouldSuppress()
 		log.debug("event_gainFocus called, suppressFocus flag was set: %r", flag)
 		if flag:
 			log.debug("event_gainFocus SUPPRESSED")
+			return
+		nextHandler()
+
+	def event_focusEntered(self, obj: NVDAObject, nextHandler: Callable[[], None]) -> None:
+		flag = self._focusSuppressor.shouldSuppress()
+		log.debug("event_focusEntered called, suppressFocus flag was set: %r", flag)
+		if flag:
 			return
 		nextHandler()
 
