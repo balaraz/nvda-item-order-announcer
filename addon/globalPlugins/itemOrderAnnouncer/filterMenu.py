@@ -18,7 +18,7 @@ def filterAll(neighbor: NVDAObject) -> bool:
 def showFilterMenu(
 	onFilterChosen: Callable[[Callable[[NVDAObject], bool]], None],
 	obj: NVDAObject,
-	onBeforeFocusRestore: Callable[[], None],
+	onItemSelected: Callable[[], None],
 ) -> None:
 	"""
 	Shows a popup menu letting the user pick how siblings should be counted.
@@ -42,11 +42,11 @@ def showFilterMenu(
 		allItem = menu.Append(wx.ID_ANY, _("All siblings"))  # pyright: ignore[reportUnknownMemberType]
 
 		def onByRole(evt: wx.CommandEvent) -> None:
-			onBeforeFocusRestore()
+			onItemSelected()
 			onFilterChosen(filterByRole(obj))
 
 		def onAll(evt: wx.CommandEvent) -> None:
-			onBeforeFocusRestore()
+			onItemSelected()
 			onFilterChosen(filterAll)
 
 		menu.Bind(wx.EVT_MENU, onByRole, byRoleItem)  # pyright: ignore[reportUnknownMemberType]
