@@ -125,7 +125,7 @@ exclude = [
 
 # Tell pyright where to load python code from
 extraPaths = [
-	"./addon",
+	"./addon/globalPlugins",
 	"../nvda/source",
 ]
 

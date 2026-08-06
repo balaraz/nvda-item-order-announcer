@@ -6,7 +6,8 @@
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		"redhat.vscode-yaml",
-		"charliermarsh.ruff"
+		"charliermarsh.ruff",
+		"editorconfig.editorconfig"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []
