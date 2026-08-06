@@ -10,10 +10,12 @@ import ui
 from inputCore import InputGesture
 from NVDAObjects import NVDAObject
 from scriptHandler import script
+from logHandler import log
 
 from .backgroundGuess import BackgroundOrderGuesser, StartResult
 from .positionInfo import getExactPosition, guessPositionViaIAccessible
 from .filterMenu import showFilterMenu
+from .focusSuppression import FocusEventSuppressor
 
 
 addonHandler.initTranslation()
@@ -26,6 +28,23 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	# a plugin reload (e.g. via the Scratchpad reload shortcut) without a full
 	# NVDA restart, avoiding a dangling thread from an orphaned instance.
 	_backgroundGuesser: Final = BackgroundOrderGuesser()
+	_focusSuppressor: Final = FocusEventSuppressor()
+
+	def event_foreground(self, obj: NVDAObject, nextHandler: Callable[[], None]) -> None:
+		flag = self._focusSuppressor.shouldSuppressForeground()
+		log.debug("event_foreground called, suppressForeground flag was set: %r", flag)
+		if flag:
+			log.debug("event_foreground SUPPRESSED")
+			return
+		nextHandler()
+
+	def event_gainFocus(self, obj: NVDAObject, nextHandler: Callable[[], None]) -> None:
+		flag = self._focusSuppressor.shouldSuppressFocus()
+		log.debug("event_gainFocus called, suppressFocus flag was set: %r", flag)
+		if flag:
+			log.debug("event_gainFocus SUPPRESSED")
+			return
+		nextHandler()
 
 	@script(
 		# Translators: Description of a script that reports the current item's order and the total
@@ -105,4 +124,4 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 					# Translators: Reported when the focused object has no parent to estimate order from.
 					ui.message(_("No parent object"))
 
-		showFilterMenu(onFilterChosen, obj)
+		showFilterMenu(onFilterChosen, obj, self._focusSuppressor.suppressNext)

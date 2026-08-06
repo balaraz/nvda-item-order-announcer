@@ -15,7 +15,11 @@ def filterAll(neighbor: NVDAObject) -> bool:
 	return True
 
 
-def showFilterMenu(onFilterChosen: Callable[[Callable[[NVDAObject], bool]], None], obj: NVDAObject) -> None:
+def showFilterMenu(
+	onFilterChosen: Callable[[Callable[[NVDAObject], bool]], None],
+	obj: NVDAObject,
+	onBeforeFocusRestore: Callable[[], None],
+) -> None:
 	"""
 	Shows a popup menu letting the user pick how siblings should be counted.
 
@@ -50,6 +54,7 @@ def showFilterMenu(onFilterChosen: Callable[[Callable[[NVDAObject], bool]], None
 		gui.mainFrame.prePopup()
 		try:
 			gui.mainFrame.PopupMenu(menu)  # pyright: ignore[reportUnknownMemberType, reportUnusedCallResult]
+			onBeforeFocusRestore()
 		finally:
 			gui.mainFrame.postPopup()
 		menu.Destroy()  # pyright: ignore[reportUnusedCallResult]
