@@ -1,8 +1,12 @@
 from collections.abc import Callable
 
+import addonHandler
 import gui
 import wx
 from NVDAObjects import NVDAObject
+
+
+addonHandler.initTranslation()
 
 
 def filterByRole(obj: NVDAObject) -> Callable[[NVDAObject], bool]:
