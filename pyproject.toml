@@ -1,5 +1,5 @@
 [project]
-name = "item_order_announcer"
+name = "itemOrderAnnouncer"
 dynamic = ["version"]
 description = ""
 maintainers = [

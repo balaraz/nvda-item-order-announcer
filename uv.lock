@@ -71,7 +71,7 @@ wheels = [
 ]
 
 [[package]]
-name = "item-order-announcer"
+name = "itemorderannouncer"
 source = { virtual = "." }
 
 [package.dev-dependencies]
