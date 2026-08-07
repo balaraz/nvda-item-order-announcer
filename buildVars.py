@@ -23,14 +23,13 @@ addon_info = AddonInfo(
 	# Translators: Long description to be shown for this add-on on add-on information from add-on store
 	addon_description=_("""Quickly announces the order, total count, and nesting level of the currently focused object."""),
 	# version
-	addon_version="1.1",
+	addon_version="2.0",
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
-	addon_changelog=_("""- Removed the word "Item" ("Елемент") from announcement messages for a more concise output (e.g., "3 of 10" instead of "Item 3 of 10").
-- Updated minimum NVDA version to 2024.1 due to Python 3.10+ syntax requirements (older NVDA versions use Python 3.7, while NVDA 2024.1 updated to Python 3.11).
-- Made fallback item order guessing asynchronous by running calculation in a background thread with periodic audio progress feedback (sound signal) to avoid freezing NVDA during long container traversals.
-- Delayed progress audio feedback to prevent unnecessary beeps on fast lists.
-- Automatically cancel background item order calculation when focus moves to another object.
+	addon_changelog=_("""- Added interactive filter selection popup menu ("By role" or "All siblings") when guessing item order via `NVDA+Shift+I`.
+- Added optimized fast O(1) order calculation for classic MSAA controls (e.g., wxWidgets, Poedit) directly via `NVDA+I`.
+- Automatically cancel ongoing background calculations when triggering a new order calculation command.
+- Suppressed redundant focus announcements only when selecting a filter menu item (ensuring focus is announced when cancelling the menu via Escape).
 - Updated Ukrainian localization and documentation."""),
 	# Author(s)
 	addon_author="balaraz <balaraz@tuta.io>",
@@ -43,7 +42,7 @@ addon_info = AddonInfo(
 	# Minimum NVDA version supported (e.g. "2019.3.0", minor version is optional)
 	addon_minimumNVDAVersion="2024.1",
 	# Last NVDA version supported/tested (e.g. "2024.4.0", ideally more recent than minimum version)
-	addon_lastTestedNVDAVersion="2026.1",
+	addon_lastTestedNVDAVersion="2026.2",
 	# Add-on update channel (default is None, denoting stable releases,
 	# and for development releases, use "dev".)
 	# Do not change unless you know what you are doing!

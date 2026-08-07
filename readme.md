@@ -9,8 +9,9 @@ This add-on for the NVDA screen reader quickly announces the order, total item c
 ## Features
 
 * **Instant Order Announcement:** Speaks the current item's index and total count in its group (e.g., "3 of 10").
+* **Fast MSAA Lookup:** Instantly resolves item order for classic MSAA applications (such as wxWidgets or Poedit) without background calculation.
 * **Level Reporting:** Automatically includes the hierarchical nesting level when applicable (e.g., "3 of 10, level 2").
-* **Fallback Order Guessing:** Allows guessing the order of an element by counting sibling objects when exact order info is unavailable.
+* **Fallback Order Guessing with Filtering:** Allows guessing element position by counting sibling objects, with a choice to filter by role or count all siblings.
 * **Configurable Shortcuts:** All shortcuts are customizable in NVDA's Input Gestures dialog.
 
 ## Key Combinations
@@ -18,7 +19,7 @@ This add-on for the NVDA screen reader quickly announces the order, total item c
 | Shortcut | Description |
 | --- | --- |
 | `NVDA+I` | Announces the index, total item count, and nesting level of the currently focused element. |
-| `NVDA+Shift+I` | Guesses the current item's position and total count based on sibling objects with the same role. |
+| `NVDA+Shift+I` | Opens a popup menu to select a filter strategy ("By role" or "All siblings") and guesses the item's position based on sibling objects. |
 
 > **Note:** You can customize or reassign these shortcuts at any time in **NVDA Menu -> Preferences -> Input Gestures -> System focus**.
 
@@ -26,17 +27,20 @@ This add-on for the NVDA screen reader quickly announces the order, total item c
 
 * **Exact Position:**
   1. The add-on retrieves the currently focused object.
-  2. It checks native position metadata for the item and its group.
+  2. It checks native position metadata for the item and its group, including fast direct position lookups for classic MSAA controls.
   3. If position information is available, NVDA announces:
      - `<index> of <total>`
      - If nesting level exists: `, level <level>`
   4. If position metadata is missing, NVDA reports "Order not available".
 
 * **Guessed Position:**
-  1. If exact position metadata is unavailable, the script inspects the focused object's parent container.
-  2. It counts all sibling objects sharing the same accessibility role as the focused element.
+  1. If exact position metadata is unavailable, invoking the shortcut prompts with a popup menu to select a filtering strategy:
+     - **By role:** counts only sibling objects sharing the same accessibility role as the focused element.
+     - **All siblings:** counts all sibling objects in the container regardless of role.
+  2. The add-on inspects the focused object's parent container and calculates position asynchronously in a background thread.
   3. If successful, NVDA announces: `Approximately <index> of <total>`.
   4. If position cannot be determined, NVDA reports "Order could not be guessed".
+  5. Starting a new calculation or moving focus automatically cancels any active background calculation. Focus announcement is suppressed only when selecting a menu item (and announced normally when cancelling the menu via Escape).
 
 ## License
 
@@ -44,6 +48,13 @@ Copyright 2026 balaraz.
 Distributed under the GNU General Public License v2.0 (GPL 2.0). See [COPYING.txt](COPYING.txt) for details.
 
 ## Change Log
+
+### Version 2.0
+- Added interactive filter selection popup menu ("By role" or "All siblings") when guessing item order via `NVDA+Shift+I`.
+- Added optimized fast O(1) order calculation for classic MSAA controls (e.g., wxWidgets, Poedit) directly via `NVDA+I`.
+- Automatically cancel ongoing background calculations when triggering a new order calculation command.
+- Suppressed redundant focus announcements only when selecting a filter menu item (ensuring focus is announced when cancelling the menu via Escape).
+- Updated Ukrainian localization and documentation.
 
 ### Version 1.1
 - Removed the word "Item" ("Елемент") from announcement messages for a more concise output (e.g., "3 of 10" instead of "Item 3 of 10").
