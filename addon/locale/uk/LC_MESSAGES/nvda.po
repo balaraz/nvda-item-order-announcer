@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'itemOrderAnnouncer' '0.1'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2026-08-06 12:43+0300\n"
-"PO-Revision-Date: 2026-08-06 15:27+0300\n"
+"POT-Creation-Date: 2026-08-07 10:09+0300\n"
+"PO-Revision-Date: 2026-08-07 10:12+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -19,13 +19,13 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. Translators: Menu item to guess item order by matching the sibling role.
-#: addon\globalPlugins\itemOrderAnnouncer\filterMenu.py:40
+#: addon\globalPlugins\itemOrderAnnouncer\filterMenu.py:44
 msgid "By role"
-msgstr "За рольлю"
+msgstr "За роллю"
 
 #. pyright: ignore[reportUnknownMemberType]
 #. Translators: Menu item to guess item order counting all siblings, regardless of role.
-#: addon\globalPlugins\itemOrderAnnouncer\filterMenu.py:42
+#: addon\globalPlugins\itemOrderAnnouncer\filterMenu.py:46
 msgid "All siblings"
 msgstr "Усі сусідні об'єкти"
 
@@ -104,8 +104,26 @@ msgstr ""
 #. Brief changelog for this version
 #. Translators: what's new content for the add-on version to be shown in the add-on store
 #: buildVars.py:29
-msgid "-"
+msgid ""
+"- Added interactive filter selection popup menu (\"By role\" or \"All "
+"siblings\") when guessing item order via `NVDA+Shift+I`.\n"
+"- Added optimized fast O(1) order calculation for classic MSAA controls "
+"(e.g., wxWidgets, Poedit) directly via `NVDA+I`.\n"
+"- Automatically cancel ongoing background calculations when triggering a new "
+"order calculation command.\n"
+"- Suppressed redundant focus announcements only when selecting a filter menu "
+"item (ensuring focus is announced when cancelling the menu via Escape).\n"
+"- Updated Ukrainian localization and documentation."
 msgstr ""
+"- Додано інтерактивне випливаюче меню вибору фільтра («За роллю» або «Усі "
+"сусідні об'єкти») при визначенні порядку через `NVDA+Shift+I`.\n"
+"- Додано оптимізоване швидке O(1) визначення порядку для класичних MSAA-"
+"елементів (наприклад, wxWidgets, Poedit) напряму через `NVDA+I`.\n"
+"- Автоматичне скасування поточних фонових розрахунків при виклику нової "
+"команди визначення порядку.\n"
+"- Приглушення зайвих оголошень фокусу лише при виборі пункту з меню фільтра "
+"(при закритті меню клавішею Escape фокус оголошується як звичайно).\n"
+"- Оновлено українську локалізацію та документацію."
 
 #~ msgid "Order not available"
 #~ msgstr "Порядок недоступний"
