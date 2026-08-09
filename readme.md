@@ -19,7 +19,7 @@ This add-on for the NVDA screen reader quickly announces the order, total item c
 | Shortcut | Description |
 | --- | --- |
 | `NVDA+I` | Announces the index, total item count, and nesting level of the currently focused element. |
-| `NVDA+Shift+I` | Opens a popup menu to select a filter strategy ("By role" or "All siblings") and guesses the item's position based on sibling objects. |
+| `NVDA+Control+I` | Opens a popup menu to select a filter strategy ("By role" or "All siblings") and guesses the item's position based on sibling objects. |
 
 > **Note:** You can customize or reassign these shortcuts at any time in **NVDA Menu -> Preferences -> Input Gestures -> System focus**.
 
@@ -48,6 +48,9 @@ Copyright 2026 balaraz.
 Distributed under the GNU General Public License v2.0 (GPL 2.0). See [COPYING.txt](COPYING.txt) for details.
 
 ## Change Log
+
+### Version 2.1
+- Changed default shortcut for guessing item order to `NVDA+Control+I` to avoid collision with NVDA built-in gestures.
 
 ### Version 2.0
 - Added interactive filter selection popup menu ("By role" or "All siblings") when guessing item order via `NVDA+Shift+I`.

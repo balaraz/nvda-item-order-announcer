@@ -23,14 +23,10 @@ addon_info = AddonInfo(
 	# Translators: Long description to be shown for this add-on on add-on information from add-on store
 	addon_description=_("""Quickly announces the order, total count, and nesting level of the currently focused object."""),
 	# version
-	addon_version="2.0",
+	addon_version="2.1",
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
-	addon_changelog=_("""- Added interactive filter selection popup menu ("By role" or "All siblings") when guessing item order via `NVDA+Shift+I`.
-- Added optimized fast O(1) order calculation for classic MSAA controls (e.g., wxWidgets, Poedit) directly via `NVDA+I`.
-- Automatically cancel ongoing background calculations when triggering a new order calculation command.
-- Suppressed redundant focus announcements only when selecting a filter menu item (ensuring focus is announced when cancelling the menu via Escape).
-- Updated Ukrainian localization and documentation."""),
+	addon_changelog=_("""- Changed default shortcut for guessing item order to NVDA+Control+I to avoid collision with NVDA built-in gestures."""),
 	# Author(s)
 	addon_author="balaraz <balaraz@tuta.io>",
 	# URL for the add-on documentation support
