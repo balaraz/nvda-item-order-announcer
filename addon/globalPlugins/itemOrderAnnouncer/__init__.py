@@ -99,7 +99,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	@script(
 		# Translators: Description of a script that guesses the current item's order when exact info is unavailable.
 		description=_("Guesses the current item's order and total count based on sibling objects (thorough)"),
-		gesture="kb:NVDA+shift+i",
+		gesture="kb:NVDA+control+i",
 	)
 	def script_guessItemOrder(self, gesture: InputGesture) -> None:
 		obj = api.getFocusObject()
