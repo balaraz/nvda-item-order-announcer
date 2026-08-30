@@ -1,3 +1,8 @@
+# A part of the nvda-item-order-announcer add-on for NVDA
+# Copyright (C) 2026 balaraz
+# This file is covered by the GNU General Public License.
+# See the file COPYING.txt for more details.
+
 import threading
 from collections.abc import Callable
 from enum import Enum, auto
