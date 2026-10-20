@@ -68,10 +68,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def script_reportItemOrder(self, gesture: InputGesture) -> None:
 		self._backgroundGuesser.cancel()
 
-		obj = api.getFocusObject()
+		obj = api.getNavigatorObject()
 		if not obj:
-			# Translators: Reported when there is no focused object.
-			ui.message(_("No focus"))
+			# Translators: Reported when there is no navigator object.
+			ui.message(_("No navigator object"))
 			return
 
 		exact = getExactPosition(obj)
@@ -107,10 +107,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		gesture="kb:NVDA+control+i",
 	)
 	def script_guessItemOrder(self, gesture: InputGesture) -> None:
-		obj = api.getFocusObject()
+		obj = api.getNavigatorObject()
 		if not obj:
-			# Translators: Reported when there is no focused object.
-			ui.message(_("No focus"))
+			# Translators: Reported when there is no navigator object.
+			ui.message(_("No navigator object"))
 			return
 
 		def onProgress() -> None:
@@ -133,7 +133,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				case StartResult.ALREADY_RUNNING:
 					tones.beep(200, 40)
 				case StartResult.NO_PARENT:
-					# Translators: Reported when the focused object has no parent to estimate order from.
+					# Translators: Reported when the navigator object has no parent to estimate order from.
 					ui.message(_("No parent object"))
 
 		showFilterMenu(onFilterChosen, obj, self._focusSuppressor.suppressNext)
