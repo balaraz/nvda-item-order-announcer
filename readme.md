@@ -1,7 +1,7 @@
 # Item Order Announcer
 
 * **Author:** balaraz <balaraz@tuta.io>
-* **NVDA compatibility:** 2019.3 to 2026.2
+* **NVDA compatibility:** 2024.1 to 2026.2
 * **Download:** [GitHub Repository][repo], [releases][rels]
 
 This add-on for the NVDA screen reader quickly announces the order, total item count, and nesting level of the currently focused object (such as list items, tree view nodes, or menu options).
