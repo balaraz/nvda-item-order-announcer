@@ -4,7 +4,7 @@
 * **NVDA compatibility:** 2024.1 to 2026.2
 * **Download:** [GitHub Repository][repo], [releases][rels]
 
-This add-on for the NVDA screen reader quickly announces the order, total item count, and nesting level of the currently focused object (such as list items, tree view nodes, or menu options).
+This add-on for the NVDA screen reader quickly announces the order, total item count, and nesting level of the current navigator object (which follows the focus by default, such as list items, tree view nodes, or menu options).
 
 ## Features
 
@@ -18,15 +18,15 @@ This add-on for the NVDA screen reader quickly announces the order, total item c
 
 | Shortcut | Description |
 | --- | --- |
-| `NVDA+I` | Announces the index, total item count, and nesting level of the currently focused element. |
+| `NVDA+I` | Announces the index, total item count, and nesting level of the current navigator object. |
 | `NVDA+Control+I` | Opens a popup menu to select a filter strategy ("By role" or "All siblings") and guesses the item's position based on sibling objects. |
 
-> **Note:** You can customize or reassign these shortcuts at any time in **NVDA Menu -> Preferences -> Input Gestures -> System focus**.
+> **Note:** You can customize or reassign these shortcuts at any time in **NVDA Menu -> Preferences -> Input Gestures -> Object navigation**.
 
 ## How It Works
 
 * **Exact Position:**
-  1. The add-on retrieves the currently focused object.
+  1. The add-on retrieves the current navigator object.
   2. It checks native position metadata for the item and its group, including fast direct position lookups for classic MSAA controls.
   3. If position information is available, NVDA announces:
      - `<index> of <total>`
@@ -35,9 +35,9 @@ This add-on for the NVDA screen reader quickly announces the order, total item c
 
 * **Guessed Position:**
   1. If exact position metadata is unavailable, invoking the shortcut prompts with a popup menu to select a filtering strategy:
-     - **By role:** counts only sibling objects sharing the same accessibility role as the focused element.
+     - **By role:** counts only sibling objects sharing the same accessibility role as the current element.
      - **All siblings:** counts all sibling objects in the container regardless of role.
-  2. The add-on inspects the focused object's parent container and calculates position asynchronously in a background thread.
+  2. The add-on inspects the current object's parent container and calculates position asynchronously in a background thread.
   3. If successful, NVDA announces: `Approximately <index> of <total>`.
   4. If position cannot be determined, NVDA reports "Order could not be guessed".
   5. Starting a new calculation or moving focus automatically cancels any active background calculation. Focus announcement is suppressed only when selecting a menu item (and announced normally when cancelling the menu via Escape).
