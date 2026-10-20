@@ -27,7 +27,7 @@ addonHandler.initTranslation()
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-	scriptCategory = globalCommands.SCRCAT_FOCUS
+	scriptCategory = globalCommands.SCRCAT_OBJECTNAVIGATION
 
 	# Class-level (not instance-level) so the background task's state survives
 	# a plugin reload (e.g. via the Scratchpad reload shortcut) without a full
