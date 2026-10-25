@@ -23,10 +23,10 @@ addon_info = AddonInfo(
 	# Translators: Long description to be shown for this add-on on add-on information from add-on store
 	addon_description=_("""Quickly announces the order, total count, and nesting level of the current navigator object."""),
 	# version
-	addon_version="2.1",
+	addon_version="2.2",
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
-	addon_changelog=_("""- Changed default shortcut for guessing item order to NVDA+Control+I to avoid collision with NVDA built-in gestures."""),
+	addon_changelog=_("""- Actions are performed on the navigator object instead of the object in focus"""),
 	# Author(s)
 	addon_author="balaraz <balaraz@tuta.io>",
 	# URL for the add-on documentation support
