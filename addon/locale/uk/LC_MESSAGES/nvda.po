@@ -8,70 +8,70 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'itemOrderAnnouncer' '0.1'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2026-08-09 10:45+0300\n"
-"PO-Revision-Date: 2026-08-09 10:54+0300\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2026-10-25 07:41+0200\n"
+"PO-Revision-Date: 2026-10-25 07:42+0200\n"
+"Last-Translator: Nazar\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #. Translators: Menu item to guess item order by matching the sibling role.
-#: addon\globalPlugins\itemOrderAnnouncer\filterMenu.py:44
+#: addon\globalPlugins\itemOrderAnnouncer\filterMenu.py:49
 msgid "By role"
 msgstr "За роллю"
 
 #. pyright: ignore[reportUnknownMemberType]
 #. Translators: Menu item to guess item order counting all siblings, regardless of role.
-#: addon\globalPlugins\itemOrderAnnouncer\filterMenu.py:46
+#: addon\globalPlugins\itemOrderAnnouncer\filterMenu.py:51
 msgid "All siblings"
 msgstr "Усі сусідні об'єкти"
 
 #. Translators: Description of a script that reports the current item's order and the total
 #. number of items in a list or tree view, falling back to an estimate when exact information
 #. is unavailable.
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:60
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:65
 msgid "Reports the current item's order and the total number of items"
 msgstr "Повідомляє порядок поточного елемента та загальну кількість елементів"
 
-#. Translators: Reported when there is no focused object.
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:69
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:108
-msgid "No focus"
-msgstr "Немає фокусу"
+#. Translators: Reported when there is no navigator object.
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:74
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:113
+msgid "No navigator object"
+msgstr "Немає об'єкта навігатора"
 
 #. Translators: Reported when pressing the item order gesture, including the nesting
 #. level (e.g. in a tree view).
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:78
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:83
 #, python-brace-format
 msgid "{index} of {total}, level {level}"
 msgstr "{index} з {total}, рівень {level}"
 
 #. Translators: Reported when pressing the item order gesture.
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:85
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:90
 #, python-brace-format
 msgid "{index} of {total}"
 msgstr "{index} з {total}"
 
 #. Translators: Reported when order information could not be determined, even by estimation.
 #. Translators: Reported when guessed order information could not be determined.
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:92
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:117
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:97
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:122
 msgid "Order could not be guessed"
 msgstr "Не вдалося визначити порядок"
 
 #. Translators: Reported when pressing the item order gesture and falling back to an estimate.
 #. Translators: Reported when pressing the guessed item order gesture.
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:97
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:120
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:102
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:125
 #, python-brace-format
 msgid "Approximately {index} of {total}"
 msgstr "Приблизно {index} з {total}"
 
 #. Translators: Description of a script that guesses the current item's order when exact info is unavailable.
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:101
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:106
 msgid ""
 "Guesses the current item's order and total count based on sibling objects "
 "(thorough)"
@@ -79,8 +79,8 @@ msgstr ""
 "Приблизно визначає порядок поточного елемента та загальну кількість на "
 "основі сусідніх об'єктів (розширений режим)"
 
-#. Translators: Reported when the focused object has no parent to estimate order from.
-#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:132
+#. Translators: Reported when the navigator object has no parent to estimate order from.
+#: addon\globalPlugins\itemOrderAnnouncer\__init__.py:137
 msgid "No parent object"
 msgstr "Немає батьківського об'єкта"
 
@@ -95,21 +95,26 @@ msgstr "Оголошення порядку елемента"
 #. Translators: Long description to be shown for this add-on on add-on information from add-on store
 #: buildVars.py:24
 msgid ""
-"Quickly announces the order, total count, and nesting level of the currently "
-"focused object."
+"Quickly announces the order, total count, and nesting level of the current "
+"navigator object."
 msgstr ""
 "Швидко оголошує порядок, загальну кількість та рівень вкладеності поточного "
-"елемента у фокусі."
+"об'єкта навігатора."
 
 #. Brief changelog for this version
 #. Translators: what's new content for the add-on version to be shown in the add-on store
 #: buildVars.py:29
 msgid ""
-"- Changed default shortcut for guessing item order to NVDA+Control+I to "
-"avoid collision with NVDA built-in gestures."
-msgstr ""
-"- Змінено стандартну комбінацію клавіш для приблизного визначення порядку на "
-"`NVDA+Control+I`, щоб уникнути конфлікту зі вбудованими жестами NVDA."
+"- Actions are performed on the navigator object instead of the object in "
+"focus"
+msgstr "- Дії виконуються над об’єктом навігатора замість об’єкта у фокусі"
+
+#~ msgid ""
+#~ "- Changed default shortcut for guessing item order to NVDA+Control+I to "
+#~ "avoid collision with NVDA built-in gestures."
+#~ msgstr ""
+#~ "- Змінено стандартну комбінацію клавіш для приблизного визначення порядку "
+#~ "на `NVDA+Control+I`, щоб уникнути конфлікту зі вбудованими жестами NVDA."
 
 #~ msgid ""
 #~ "- Added interactive filter selection popup menu (\"By role\" or \"All "
