@@ -1,0 +1,579 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en">
+<file id="readme.md" original="https://raw.githubusercontent.com/balaraz/nvda-item-order-announcer/54055c53af3575497824382835d652c1629ea31a/readme.md">
+<skeleton>
+# $(ID:47198b71-a927-452c-a637-b62e29cfdad5)
+
+* $(ID:a7e959de-b38b-471a-8f00-03a5e4012f8e)
+* $(ID:c84cab2d-5edd-4534-93ba-2683b7557463)
+* $(ID:64ac710c-b428-4d2c-b621-c05b258f9a58)
+
+$(ID:18124b8c-0c48-442f-8451-0b087bd0b598)
+
+## $(ID:ce500bb6-125f-408c-8241-f763cc78cef5)
+
+* $(ID:d8fccf26-9a83-4c56-956b-cde1a95389b1)
+* $(ID:dd6920ac-6a3a-46c1-835d-02ca6da26be5)
+* $(ID:449b4b1c-ca79-4f02-bd69-6a830dc5716a)
+* $(ID:2dcc3fc0-18b0-4b23-98f7-4f982adfc9b5)
+* $(ID:49c7e976-bcea-4077-93b2-744b8d263724)
+
+## $(ID:c4fc47ba-029f-4221-9d59-990c135f771e)
+
+|$(ID:9347d205-cb19-439b-83c7-7d3b86a1ba40)|
+| --- | --- |
+|$(ID:298aa98d-b3db-426e-b9b1-36e7779723b7)|
+|$(ID:fc2be9c8-e2fd-4d14-9880-e913398b9f87)|
+
+$(ID:cbb1b146-45a0-427b-a0ac-173bc5332a73)
+
+## $(ID:9464dc6a-fa16-4216-ac7f-cf519f153aa5)
+
+* $(ID:7f5c7766-fcde-4ebf-aee5-bdf9c24797de)
+  1. $(ID:de8b2d72-ff06-46d2-913e-ee4c21a89aae)
+  2. $(ID:f00fcbaa-0bcd-46ef-bb8b-59526f0d3e7f)
+  3. $(ID:61e4eab4-3cd4-48bc-910c-d5314394198e)
+$(ID:b7d84e9f-927f-4116-b89e-61b3cbabfbe4)
+$(ID:487f0191-d7dc-4ca6-8000-d5acb8cf282f)
+  4. $(ID:45f8ff0f-3e7a-4ea3-9255-736d2b1da92c)
+
+* $(ID:dd0844cc-f522-4781-ab41-d56ad5e0c1b7)
+  1. $(ID:f9293e8b-15d7-4d15-8b31-969c2550f4f5)
+$(ID:589a4246-30bd-4b31-b420-cc3ef7336e7b)
+$(ID:5b6cfeb1-5c42-4639-9103-c8da4d8532dc)
+  2. $(ID:e68d5a40-588e-4154-b4b1-7811550c1d92)
+  3. $(ID:9aff133e-c0bb-4279-9514-c73c1882519a)
+  4. $(ID:cb266672-b7ef-4abd-bb5f-17ff6ab0b5b9)
+  5. $(ID:55ca1e1a-06f5-4635-b3d7-28ef1d1b3b1e)
+
+## $(ID:e46bfa42-beda-4e5a-bcd4-dc5f7ec42c23)
+
+$(ID:75a5611c-c400-458d-aeb6-e6c18768b1c5)
+$(ID:39911f4c-9f5e-4e9d-8ff4-4c466df773df)
+
+## $(ID:1a8ede65-7464-4914-b5bf-6661b28204dc)
+
+### $(ID:14df2282-2591-4fc2-9b47-40acea9099e8)
+$(ID:61d4a0f8-422a-4e62-b662-b3663a8371a9)
+
+### $(ID:36ddbc4f-83c5-4cff-b3e5-bd7ff869f825)
+$(ID:5685a7a6-2729-4c92-bb9d-2506c7c7200c)
+$(ID:39f308c5-5a8d-4970-8709-d4eaa2347b2d)
+$(ID:cb6a4fbd-6a0a-402b-be73-7b2cbd4fabee)
+$(ID:994bd74c-e46c-4d78-8d8d-02dc7083c23a)
+$(ID:2fda32ca-ce10-451c-8c42-93f18bf87214)
+
+### $(ID:efaf54a3-6e91-4fe5-93b9-ba5da5be93d3)
+$(ID:dc23ddfd-70ac-4d1a-8d96-2bef2e6a13f4)
+$(ID:0923c940-ac7a-4e0b-852a-78c7b255753d)
+$(ID:8de7630c-d504-4628-b712-f7d80977a175)
+$(ID:7a7b6068-8327-4af6-86b8-8193f8f3ec60)
+$(ID:73bc816c-39b1-42ba-8c3d-7299f4f40c96)
+$(ID:bb535c55-4bff-41b7-8e23-0b0656efd284)
+
+### $(ID:9ad81b0c-e634-4dc0-9070-6d2d8689ddf9)
+* $(ID:0a51e3a2-3aa4-4915-925a-9d97ab9f3dc4)
+* $(ID:db3e4f39-7414-4457-ab0b-ecfb74d9f04a)
+* $(ID:3901f3a5-e92e-444f-8604-2f18ab7be6a4)
+
+
+$(ID:89802bb0-6849-41b6-b017-9a2c9ad36f7a)
+$(ID:d2cd2e32-7ed3-4b60-b660-3fceac583a7d)
+
+</skeleton>
+<unit id="47198b71-a927-452c-a637-b62e29cfdad5">
+<notes>
+<note appliesTo="source">line: 2</note>
+<note appliesTo="source">prefix: # </note>
+</notes>
+<segment>
+<source>Item Order Announcer</source>
+</segment>
+</unit>
+<unit id="a7e959de-b38b-471a-8f00-03a5e4012f8e">
+<notes>
+<note appliesTo="source">line: 4</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**Author:** balaraz &lt;balaraz@tuta.io&gt;</source>
+</segment>
+</unit>
+<unit id="c84cab2d-5edd-4534-93ba-2683b7557463">
+<notes>
+<note appliesTo="source">line: 5</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**NVDA compatibility:** 2024.1 to 2026</source>
+</segment>
+</unit>
+<unit id="64ac710c-b428-4d2c-b621-c05b258f9a58">
+<notes>
+<note appliesTo="source">line: 6</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**Download:** [GitHub Repository][repo], [releases][rels]</source>
+</segment>
+</unit>
+<unit id="18124b8c-0c48-442f-8451-0b087bd0b598">
+<notes>
+<note appliesTo="source">line: 8</note>
+</notes>
+<segment>
+<source>This add-on for the NVDA screen reader quickly announces the order, total item count, and nesting level of the current navigator object (which follows the focus by default, such as list items, tree view nodes, or menu options).</source>
+</segment>
+</unit>
+<unit id="ce500bb6-125f-408c-8241-f763cc78cef5">
+<notes>
+<note appliesTo="source">line: 10</note>
+<note appliesTo="source">prefix: ## </note>
+</notes>
+<segment>
+<source>Features</source>
+</segment>
+</unit>
+<unit id="d8fccf26-9a83-4c56-956b-cde1a95389b1">
+<notes>
+<note appliesTo="source">line: 12</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**Instant Order Announcement:** Speaks the current item's index and total count in its group (e.g., "3 of 10").</source>
+</segment>
+</unit>
+<unit id="dd6920ac-6a3a-46c1-835d-02ca6da26be5">
+<notes>
+<note appliesTo="source">line: 13</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**Fast MSAA Lookup:** Instantly resolves item order for classic MSAA applications (such as wxWidgets or Poedit) without background calculation.</source>
+</segment>
+</unit>
+<unit id="449b4b1c-ca79-4f02-bd69-6a830dc5716a">
+<notes>
+<note appliesTo="source">line: 14</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**Level Reporting:** Automatically includes the hierarchical nesting level when applicable (e.g., "3 of 10, level 2").</source>
+</segment>
+</unit>
+<unit id="2dcc3fc0-18b0-4b23-98f7-4f982adfc9b5">
+<notes>
+<note appliesTo="source">line: 15</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**Fallback Order Guessing with Filtering:** Allows guessing element position by counting sibling objects, with a choice to filter by role or count all siblings.</source>
+</segment>
+</unit>
+<unit id="49c7e976-bcea-4077-93b2-744b8d263724">
+<notes>
+<note appliesTo="source">line: 16</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**Configurable Shortcuts:** All shortcuts are customizable in NVDA's Input Gestures dialog.</source>
+</segment>
+</unit>
+<unit id="c4fc47ba-029f-4221-9d59-990c135f771e">
+<notes>
+<note appliesTo="source">line: 18</note>
+<note appliesTo="source">prefix: ## </note>
+</notes>
+<segment>
+<source>Key Combinations</source>
+</segment>
+</unit>
+<unit id="9347d205-cb19-439b-83c7-7d3b86a1ba40">
+<notes>
+<note appliesTo="source">line: 20</note>
+<note appliesTo="source">prefix: |</note>
+<note appliesTo="source">suffix: |</note>
+</notes>
+<segment>
+<source> Shortcut | Description </source>
+</segment>
+</unit>
+<unit id="298aa98d-b3db-426e-b9b1-36e7779723b7">
+<notes>
+<note appliesTo="source">line: 22</note>
+<note appliesTo="source">prefix: |</note>
+<note appliesTo="source">suffix: |</note>
+</notes>
+<segment>
+<source> `NVDA+I` | Announces the index, total item count, and nesting level of the current navigator object. </source>
+</segment>
+</unit>
+<unit id="fc2be9c8-e2fd-4d14-9880-e913398b9f87">
+<notes>
+<note appliesTo="source">line: 23</note>
+<note appliesTo="source">prefix: |</note>
+<note appliesTo="source">suffix: |</note>
+</notes>
+<segment>
+<source> `NVDA+Control+I` | Opens a popup menu to select a filter strategy ("By role" or "All siblings") and guesses the item's position based on sibling objects. </source>
+</segment>
+</unit>
+<unit id="cbb1b146-45a0-427b-a0ac-173bc5332a73">
+<notes>
+<note appliesTo="source">line: 25</note>
+</notes>
+<segment>
+<source>&gt; **Note:** You can customize or reassign these shortcuts at any time in **NVDA Menu -&gt; Preferences -&gt; Input Gestures -&gt; Object navigation**.</source>
+</segment>
+</unit>
+<unit id="9464dc6a-fa16-4216-ac7f-cf519f153aa5">
+<notes>
+<note appliesTo="source">line: 27</note>
+<note appliesTo="source">prefix: ## </note>
+</notes>
+<segment>
+<source>How It Works</source>
+</segment>
+</unit>
+<unit id="7f5c7766-fcde-4ebf-aee5-bdf9c24797de">
+<notes>
+<note appliesTo="source">line: 29</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**Exact Position:**</source>
+</segment>
+</unit>
+<unit id="de8b2d72-ff06-46d2-913e-ee4c21a89aae">
+<notes>
+<note appliesTo="source">line: 30</note>
+<note appliesTo="source">prefix:   1. </note>
+</notes>
+<segment>
+<source>The add-on retrieves the current navigator object.</source>
+</segment>
+</unit>
+<unit id="f00fcbaa-0bcd-46ef-bb8b-59526f0d3e7f">
+<notes>
+<note appliesTo="source">line: 31</note>
+<note appliesTo="source">prefix:   2. </note>
+</notes>
+<segment>
+<source>It checks native position metadata for the item and its group, including fast direct position lookups for classic MSAA controls.</source>
+</segment>
+</unit>
+<unit id="61e4eab4-3cd4-48bc-910c-d5314394198e">
+<notes>
+<note appliesTo="source">line: 32</note>
+<note appliesTo="source">prefix:   3. </note>
+</notes>
+<segment>
+<source>If position information is available, NVDA announces:</source>
+</segment>
+</unit>
+<unit id="b7d84e9f-927f-4116-b89e-61b3cbabfbe4">
+<notes>
+<note appliesTo="source">line: 33</note>
+</notes>
+<segment>
+<source>     - `&lt;index&gt; of &lt;total&gt;`</source>
+</segment>
+</unit>
+<unit id="487f0191-d7dc-4ca6-8000-d5acb8cf282f">
+<notes>
+<note appliesTo="source">line: 34</note>
+</notes>
+<segment>
+<source>     - If nesting level exists: `, level &lt;level&gt;`</source>
+</segment>
+</unit>
+<unit id="45f8ff0f-3e7a-4ea3-9255-736d2b1da92c">
+<notes>
+<note appliesTo="source">line: 35</note>
+<note appliesTo="source">prefix:   4. </note>
+</notes>
+<segment>
+<source>If position metadata is missing, NVDA reports "Order not available".</source>
+</segment>
+</unit>
+<unit id="dd0844cc-f522-4781-ab41-d56ad5e0c1b7">
+<notes>
+<note appliesTo="source">line: 37</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>**Guessed Position:**</source>
+</segment>
+</unit>
+<unit id="f9293e8b-15d7-4d15-8b31-969c2550f4f5">
+<notes>
+<note appliesTo="source">line: 38</note>
+<note appliesTo="source">prefix:   1. </note>
+</notes>
+<segment>
+<source>If exact position metadata is unavailable, invoking the shortcut prompts with a popup menu to select a filtering strategy:</source>
+</segment>
+</unit>
+<unit id="589a4246-30bd-4b31-b420-cc3ef7336e7b">
+<notes>
+<note appliesTo="source">line: 39</note>
+</notes>
+<segment>
+<source>     - **By role:** counts only sibling objects sharing the same accessibility role as the current element.</source>
+</segment>
+</unit>
+<unit id="5b6cfeb1-5c42-4639-9103-c8da4d8532dc">
+<notes>
+<note appliesTo="source">line: 40</note>
+</notes>
+<segment>
+<source>     - **All siblings:** counts all sibling objects in the container regardless of role.</source>
+</segment>
+</unit>
+<unit id="e68d5a40-588e-4154-b4b1-7811550c1d92">
+<notes>
+<note appliesTo="source">line: 41</note>
+<note appliesTo="source">prefix:   2. </note>
+</notes>
+<segment>
+<source>The add-on inspects the current object's parent container and calculates position asynchronously in a background thread.</source>
+</segment>
+</unit>
+<unit id="9aff133e-c0bb-4279-9514-c73c1882519a">
+<notes>
+<note appliesTo="source">line: 42</note>
+<note appliesTo="source">prefix:   3. </note>
+</notes>
+<segment>
+<source>If successful, NVDA announces: `Approximately &lt;index&gt; of &lt;total&gt;`.</source>
+</segment>
+</unit>
+<unit id="cb266672-b7ef-4abd-bb5f-17ff6ab0b5b9">
+<notes>
+<note appliesTo="source">line: 43</note>
+<note appliesTo="source">prefix:   4. </note>
+</notes>
+<segment>
+<source>If position cannot be determined, NVDA reports "Order could not be guessed".</source>
+</segment>
+</unit>
+<unit id="55ca1e1a-06f5-4635-b3d7-28ef1d1b3b1e">
+<notes>
+<note appliesTo="source">line: 44</note>
+<note appliesTo="source">prefix:   5. </note>
+</notes>
+<segment>
+<source>Starting a new calculation or moving focus automatically cancels any active background calculation. Focus announcement is suppressed only when selecting a menu item (and announced normally when cancelling the menu via Escape).</source>
+</segment>
+</unit>
+<unit id="e46bfa42-beda-4e5a-bcd4-dc5f7ec42c23">
+<notes>
+<note appliesTo="source">line: 46</note>
+<note appliesTo="source">prefix: ## </note>
+</notes>
+<segment>
+<source>License</source>
+</segment>
+</unit>
+<unit id="75a5611c-c400-458d-aeb6-e6c18768b1c5">
+<notes>
+<note appliesTo="source">line: 48</note>
+</notes>
+<segment>
+<source>Copyright 2026 balaraz.</source>
+</segment>
+</unit>
+<unit id="39911f4c-9f5e-4e9d-8ff4-4c466df773df">
+<notes>
+<note appliesTo="source">line: 49</note>
+</notes>
+<segment>
+<source>Distributed under the GNU General Public License v2.0 (GPL 2.0). See [COPYING.txt](COPYING.txt) for details.</source>
+</segment>
+</unit>
+<unit id="1a8ede65-7464-4914-b5bf-6661b28204dc">
+<notes>
+<note appliesTo="source">line: 51</note>
+<note appliesTo="source">prefix: ## </note>
+</notes>
+<segment>
+<source>Change Log</source>
+</segment>
+</unit>
+<unit id="14df2282-2591-4fc2-9b47-40acea9099e8">
+<notes>
+<note appliesTo="source">line: 53</note>
+<note appliesTo="source">prefix: ### </note>
+</notes>
+<segment>
+<source>Version 2.1</source>
+</segment>
+</unit>
+<unit id="61d4a0f8-422a-4e62-b662-b3663a8371a9">
+<notes>
+<note appliesTo="source">line: 54</note>
+</notes>
+<segment>
+<source>- Changed default shortcut for guessing item order to `NVDA+Control+I` to avoid collision with NVDA built-in gestures.</source>
+</segment>
+</unit>
+<unit id="36ddbc4f-83c5-4cff-b3e5-bd7ff869f825">
+<notes>
+<note appliesTo="source">line: 56</note>
+<note appliesTo="source">prefix: ### </note>
+</notes>
+<segment>
+<source>Version 2.0</source>
+</segment>
+</unit>
+<unit id="5685a7a6-2729-4c92-bb9d-2506c7c7200c">
+<notes>
+<note appliesTo="source">line: 57</note>
+</notes>
+<segment>
+<source>- Added interactive filter selection popup menu ("By role" or "All siblings") when guessing item order via `NVDA+Shift+I`.</source>
+</segment>
+</unit>
+<unit id="39f308c5-5a8d-4970-8709-d4eaa2347b2d">
+<notes>
+<note appliesTo="source">line: 58</note>
+</notes>
+<segment>
+<source>- Added optimized fast O(1) order calculation for classic MSAA controls (e.g., wxWidgets, Poedit) directly via `NVDA+I`.</source>
+</segment>
+</unit>
+<unit id="cb6a4fbd-6a0a-402b-be73-7b2cbd4fabee">
+<notes>
+<note appliesTo="source">line: 59</note>
+</notes>
+<segment>
+<source>- Automatically cancel ongoing background calculations when triggering a new order calculation command.</source>
+</segment>
+</unit>
+<unit id="994bd74c-e46c-4d78-8d8d-02dc7083c23a">
+<notes>
+<note appliesTo="source">line: 60</note>
+</notes>
+<segment>
+<source>- Suppressed redundant focus announcements only when selecting a filter menu item (ensuring focus is announced when cancelling the menu via Escape).</source>
+</segment>
+</unit>
+<unit id="2fda32ca-ce10-451c-8c42-93f18bf87214">
+<notes>
+<note appliesTo="source">line: 61</note>
+</notes>
+<segment>
+<source>- Updated Ukrainian localization and documentation.</source>
+</segment>
+</unit>
+<unit id="efaf54a3-6e91-4fe5-93b9-ba5da5be93d3">
+<notes>
+<note appliesTo="source">line: 63</note>
+<note appliesTo="source">prefix: ### </note>
+</notes>
+<segment>
+<source>Version 1.1</source>
+</segment>
+</unit>
+<unit id="dc23ddfd-70ac-4d1a-8d96-2bef2e6a13f4">
+<notes>
+<note appliesTo="source">line: 64</note>
+</notes>
+<segment>
+<source>- Removed the word "Item" ("Елемент") from announcement messages for a more concise output (e.g., "3 of 10" instead of "Item 3 of 10").</source>
+</segment>
+</unit>
+<unit id="0923c940-ac7a-4e0b-852a-78c7b255753d">
+<notes>
+<note appliesTo="source">line: 65</note>
+</notes>
+<segment>
+<source>- Updated minimum NVDA version to 2024.1 due to Python 3.10+ syntax requirements (older NVDA versions use Python 3.7, while NVDA 2024.1 updated to Python 3.11).</source>
+</segment>
+</unit>
+<unit id="8de7630c-d504-4628-b712-f7d80977a175">
+<notes>
+<note appliesTo="source">line: 66</note>
+</notes>
+<segment>
+<source>- Made fallback item order guessing asynchronous by running calculation in a background thread with periodic audio progress feedback (sound signal) to avoid freezing NVDA during long container traversals.</source>
+</segment>
+</unit>
+<unit id="7a7b6068-8327-4af6-86b8-8193f8f3ec60">
+<notes>
+<note appliesTo="source">line: 67</note>
+</notes>
+<segment>
+<source>- Delayed progress audio feedback to prevent unnecessary beeps on fast lists.</source>
+</segment>
+</unit>
+<unit id="73bc816c-39b1-42ba-8c3d-7299f4f40c96">
+<notes>
+<note appliesTo="source">line: 68</note>
+</notes>
+<segment>
+<source>- Automatically cancel background item order calculation when focus moves to another object.</source>
+</segment>
+</unit>
+<unit id="bb535c55-4bff-41b7-8e23-0b0656efd284">
+<notes>
+<note appliesTo="source">line: 69</note>
+</notes>
+<segment>
+<source>- Updated Ukrainian localization and documentation.</source>
+</segment>
+</unit>
+<unit id="9ad81b0c-e634-4dc0-9070-6d2d8689ddf9">
+<notes>
+<note appliesTo="source">line: 71</note>
+<note appliesTo="source">prefix: ### </note>
+</notes>
+<segment>
+<source>Version 1.0</source>
+</segment>
+</unit>
+<unit id="0a51e3a2-3aa4-4915-925a-9d97ab9f3dc4">
+<notes>
+<note appliesTo="source">line: 72</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>Added script to report focused item order, total count, and nesting level.</source>
+</segment>
+</unit>
+<unit id="db3e4f39-7414-4457-ab0b-ecfb74d9f04a">
+<notes>
+<note appliesTo="source">line: 73</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>Added fallback script to guess item order and total count based on sibling objects when native position info is unavailable.</source>
+</segment>
+</unit>
+<unit id="3901f3a5-e92e-444f-8604-2f18ab7be6a4">
+<notes>
+<note appliesTo="source">line: 74</note>
+<note appliesTo="source">prefix: * </note>
+</notes>
+<segment>
+<source>Assigned default keyboard shortcuts (`NVDA+I` and `NVDA+Shift+I`) to the scripts.</source>
+</segment>
+</unit>
+<unit id="89802bb0-6849-41b6-b017-9a2c9ad36f7a">
+<notes>
+<note appliesTo="source">line: 77</note>
+</notes>
+<segment>
+<source>[repo]: https://github.com/balaraz/nvda-item-order-announcer</source>
+</segment>
+</unit>
+<unit id="d2cd2e32-7ed3-4b60-b660-3fceac583a7d">
+<notes>
+<note appliesTo="source">line: 78</note>
+</notes>
+<segment>
+<source>[rels]: https://github.com/balaraz/nvda-item-order-announcer/releases</source>
+</segment>
+</unit>
+</file>
+</xliff>
